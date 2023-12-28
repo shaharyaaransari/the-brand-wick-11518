@@ -32,18 +32,21 @@ export const Register = () => {
     setFormError(validate(details));
       console.log(details)
         if(details.name && details.email && details.username && details.phone && details.password){
-          axios.post(`http://localhost:8080/user/signup`, details)
+          axios.post(`https://brandwick-be.onrender.com/user/signup`, details)
           .then((res) => {
               if(res.data.register){
                 toast({
                   title: `${res.data.msg}`,
                   status: 'success',
-                  duration: 9000,
+                  duration: 1000,
                   isClosable: true,
                 })
               }
           if(res.data.register){
+            setTimeout(()=>{
               navigate("/login") 
+            },2000)
+              
           }
             console.log(res);
           })
@@ -51,7 +54,7 @@ export const Register = () => {
             console.log(err);
           })
         }
-    
+    setDetails(intailValue)
   };
   const validate = (value) => {
     const error = {};
