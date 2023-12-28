@@ -1,10 +1,12 @@
 
-import { Register } from "./component/Register/Register";
+
+import { Allroutes } from "./component/routes/Allroutes";
 
 function App() {
   return (
-    <div backgroundColor="gray.200" >
-  <Register/>
+    <div  >
+        <Allroutes/>
+    
     </div>
   );
 }

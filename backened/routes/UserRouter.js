@@ -1,9 +1,9 @@
 const express = require("express");
 const userRouter = express.Router()
-const UserModel = require("../models/UserModel.js")
+const UserModel = require("../model/UserModel.js")
 const bcrypt = require("bcrypt")
   const jwt = require("jsonwebtoken");
-const blacklistModel = require("../models/BlacklistModel.js");
+const blacklistModel = require("../model/BlacklistModel.js");
 
 userRouter.post("/signup", async (req, res) => {
     const {  email, password } = req.body;
@@ -11,10 +11,10 @@ userRouter.post("/signup", async (req, res) => {
         const existingUser = await UserModel.findOne({ email })
         const RegrexPass = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/
         if (!RegrexPass.test(password)) {
-            return res.status(400).send({ msg: "please choose another password" })
+            return res.status(201).send({ msg: "please choose another password" })
         }
         if (existingUser) {
-            return res.status(400).send({ msg: "User already exist" })
+            return res.status(201).send({ msg: "User already exist" })
         }
         bcrypt.hash(password, 8, async (err, hash) => {
             if (err) {
