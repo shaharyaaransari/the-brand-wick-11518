@@ -30,8 +30,9 @@ export const Register = () => {
 
   const handleSubmit = () => {
     setFormError(validate(details));
-      console.log(details)
+      
         if(details.name && details.email && details.username && details.phone && details.password){
+          console.log(details)
           axios.post(`https://brandwick-be.onrender.com/user/signup`, details)
           .then((res) => {
               if(res.data.register){
@@ -54,7 +55,7 @@ export const Register = () => {
             console.log(err);
           })
         }
-    setDetails(intailValue)
+   
   };
   const validate = (value) => {
     const error = {};
