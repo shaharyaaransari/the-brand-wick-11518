@@ -32,7 +32,7 @@ export const Login = () => {
     const handleLogin =(e)=>{
       e.preventDefault();
            const obj={email,password}
-           axios.post(`https://brandwick-be.onrender.com/user/login`, obj)
+           axios.post(`http://localhost:8080/user/login`, obj)
            .then((res) => {
                if(res.data.token){
                  toast({
@@ -41,6 +41,13 @@ export const Login = () => {
                    duration: 1000,
                    isClosable: true,
                  })
+               }else{
+                toast({
+                  title: `${res.data.msg}`,
+                  status: 'success',
+                  duration: 1000,
+                  isClosable: true,
+                })
                }
                if(res.data.token){
                 setTimeout(()=>{

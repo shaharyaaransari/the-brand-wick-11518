@@ -4,7 +4,7 @@ const UserModel = require("../model/UserModel.js")
 const bcrypt = require("bcrypt")
   const jwt = require("jsonwebtoken");
 const blacklistModel = require("../model/BlacklistModel.js");
-
+require("dotenv").config()
 userRouter.post("/signup", async (req, res) => {
     const {  email, password } = req.body;
     try {
@@ -36,14 +36,14 @@ userRouter.post("/login", async (req, res) => {
         if (user) {
             bcrypt.compare(password, user.password, (err, decoded) => {
                 if (decoded) {
-                    const token = jwt.sign({ userId: user._id, username: user.name }, "gullu", { expiresIn: "7d" })
+                    const token = jwt.sign({ userId: user._id, username: user.name }, process.env.SECRET_KEY, { expiresIn: "7d" })
                     res.status(200).send({ msg: "Login successfully!!", token: token })
                 } else {
-                    res.status(400).send({ msg: "wrong credentails!!" })
+                    res.status(201).send({ msg: "wrong credentails!!" })
                 }
             })
         } else {
-            res.status(400).send({ msg: "user does not exist" })
+            res.status(201).send({ msg: "user does not exist" })
         }
 
     } catch (error) {

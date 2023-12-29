@@ -35,7 +35,7 @@ export const Register = () => {
           console.log(details)
           axios.post(`https://brandwick-be.onrender.com/user/signup`, details)
           .then((res) => {
-              if(res.data.register){
+              if(res.data){
                 toast({
                   title: `${res.data.msg}`,
                   status: 'success',
