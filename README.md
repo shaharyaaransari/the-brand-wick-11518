@@ -1,5 +1,5 @@
 # the-brand-wick-11518
-    Deployed Link - https://thebrandwick-pntui52sy-shaharyaars-projects.vercel.app/
+    Deployed Link - https://the-brand-wick-11518.vercel.app/
 # TheBrandWick Website
 
 TheBrandWick is a website where users can register and log in to access various features. The system utilizes a token-based authentication mechanism to ensure secure user authentication.
